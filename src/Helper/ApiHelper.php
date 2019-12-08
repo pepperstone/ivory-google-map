@@ -26,7 +26,7 @@ class ApiHelper extends AbstractHelper
      */
     public function render(array $objects)
     {
-        $this->getEventDispatcher()->dispatch(ApiEvents::JAVASCRIPT, $event = new ApiEvent($objects));
+        $this->getEventDispatcher()->dispatch($event = new ApiEvent($objects), ApiEvents::JAVASCRIPT);
 
         return $event->getCode();
     }

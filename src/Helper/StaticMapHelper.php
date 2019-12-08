@@ -135,7 +135,7 @@ class StaticMapHelper extends AbstractHelper
      */
     public function render(Map $map)
     {
-        $this->getEventDispatcher()->dispatch(StaticMapEvents::HTML, $event = new StaticMapEvent($map));
+        $this->getEventDispatcher()->dispatch($event = new StaticMapEvent($map), StaticMapEvents::HTML);
 
         $query = preg_replace('/(%5B[0-9]+%5D)+=/', '=', http_build_query($event->getParameters(), '', '&'));
         $url = 'https://maps.googleapis.com/maps/api/staticmap?'.$query;
